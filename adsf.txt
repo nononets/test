@@ -3,7 +3,6 @@ package google.test;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
-import java.util.regex.*;
 
 public class Main {
 
@@ -16,19 +15,14 @@ public class Main {
 		
 			String line = "";
 		try {
-			url = new URL("https://www.youtube.com/");
+			url = new URL("https://www.google.com/");
 			br = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
 			
 			path = new String("D:\\Web\\Web\\file\\test.html");
 			bw = new BufferedWriter(new FileWriter(path));
 			
 			while((line = br.readLine()) != null) {
-				Pattern p = Pattern.compile("[/]");
-				Matcher m = p.matcher(line);
-				
-				if (m.find()) {
-					bw.write(line + "\r\n");
-				}
+				bw.write(line + "\r\n");
 			}
 			
 			bw.flush();
