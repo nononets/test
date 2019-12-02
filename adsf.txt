@@ -9,32 +9,21 @@ public class Main {
 	public static void main(String[] args) {
 			URL url;
 			BufferedReader br = null;
-			
-			String path;
-			BufferedWriter bw = null;
 		
-			String line = "";
+			int line = 1;
 		try {
 			url = new URL("https://www.google.com/");
 			br = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
 			
-			path = new String("D:\\Web\\Web\\file\\test.html");
-			bw = new BufferedWriter(new FileWriter(path));
-			
-			while((line = br.readLine()) != null) {
-				bw.write(line + "\r\n");
+			for (int i = 0; i < line; i++) {
+				System.out.println(br.readLine() + "\r\n");
 			}
-			
-			bw.flush();
-			
-			System.out.println("load...");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				br.close();
-				bw.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
