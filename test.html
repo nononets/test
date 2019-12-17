@@ -13,31 +13,48 @@
             margin: 0;
             padding: 0;
         }
-        .border{
-            border: 1px solid gray;
+        .body{
+            background-color: white;
         }
-        #mainContainer{
+        .scheduleBox{
             display: flex;
             width: 100%;
             height: 100vh;
         }
-        #mainHeader{
-            width: 100%;
-            height: 10%;
+        .schedule{
+            flex-basis: 400px;
+            height: 400px;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: 5.3%;
+            background-color: rgb(243, 241, 241);
         }
-        #mainContents{
-            
+        .sidebar{
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100vh;
+            opacity: 1;
+            background-color: rgb(243, 241, 241);
         }
     </style>
 </head>
-<body>
-    <div id="mainContainer" class="border">
-        <header id="mainHeader" class="border"></header>
-        <main id="mainContents">
-            <div>
-
-            </div>
-        </main>
+<body class="body">
+    <div class="scheduleBox">
+        <div class="schedule">
+            <h1>1일차</h1>
+        </div>
+        <div class="schedule">
+            <h1>2일차</h1>
+        </div>
+        <div class="schedule">
+            <h1>3일차</h1>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div>홈</div>
+        <div>계산</div>
     </div>
 </body>
 </html>
