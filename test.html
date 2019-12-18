@@ -41,20 +41,54 @@
     </style>
 </head>
 <body class="body">
-    <div class="scheduleBox">
-        <div class="schedule">
+    <div class="scheduleBox" id="scheduleBox" dropzone="true">
+        <div class="schedule" dropzone="true">
             <h1>1일차</h1>
         </div>
-        <div class="schedule">
+        <div class="schedule" dropzone="true">
             <h1>2일차</h1>
         </div>
-        <div class="schedule">
+        <div class="schedule" dropzone="true">
             <h1>3일차</h1>
         </div>
     </div>
     <div class="sidebar" id="sidebar">
-        <div>홈</div>
-        <div>계산</div>
+        <div draggable="true" class="menu">홈</div>
+        <div draggable="true" class="menu">계산</div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{ 
+            const schedule = document.getElementsByClassName('schedule')
+            const sidebar = document.getElementById('sidebar');
+
+            sidebar.addEventListener('dragstart', dragstart_);
+
+            function dragstart_(e){       
+                e.dataTransfer.setData('innerHTML', e.target.innerHTML);
+
+                for (let i = 0; i < schedule.length; i++) {
+                    schedule[i].addEventListener('dragstart', dragstart_);
+                    schedule[i].addEventListener('dragover', dragover_);
+                    schedule[i].addEventListener('drop', drop_);
+                }
+            }
+            
+            function dragover_(e){
+                e.preventDefault();
+            }
+
+            function drop_(e){
+                e.preventDefault();
+                
+                let inner = e.dataTransfer.getData('innerHTML');
+                let div = document.createElement('div');
+                let divNode = document.createTextNode(inner);
+
+                div.appendChild(divNode);
+                div.setAttribute('ondblclick', 'this.parentNode.removeChild(this)');
+                this.append(div);
+            }
+        });
+    </script>
 </body>
 </html>
